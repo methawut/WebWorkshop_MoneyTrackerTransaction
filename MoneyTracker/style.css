@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+*{
+    font-family: 'Kanit', sans-serif;
+    box-sizing: border-box;
+    
+}
+
+
+:root{
+    --box-shabow:0 1px 3px rgba(0,0,0,0.12)     /* * สร้างตัวแปล --box-shabow ที่มีค่าที่ทำเงาที่ขอบไว้ให้ สามารถเรียกตัวแปล ไปใช้ได้เลย  */
+}
+
+
+
+body{
+    background-color: wheat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+
+.container{
+    margin: 30px auto;
+    width: 350px;
+}
+h4{
+    margin: 0;
+}
+h1{
+    letter-spacing: 1px;                        /* * กำหนดระยะห่างระหว่างตัวอักษร */
+    margin: 0;
+}
+h3{
+    border-bottom: 1px solid rgb(2, 2, 2);
+    padding-bottom: 10px;
+    margin: 40px 0px 10px;
+}
+
+
+
+.income-expense-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(241, 229, 205);
+    box-shadow: var(--box-shabow);              /* * ดึงตัวแปล --box-shabow มาใช้*/
+
+    margin: 10px;
+    padding: 20px;
+}
+.income-expense-container > div {               /* * เข้าถึง Tag div ทั้งหมดภายใน class "income-expense-container" */
+    flex: 1;
+    text-align: center;
+}
+.income-expense-container > div:first-of-type{  /* * เข้าถึง Tag div ตัวแรก class "income-expense-container" */
+    border-right: 1px solid black;
+}
+
+
+
+.money{
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 5px 0px;
+}
+.money.plus{
+    color: #1ed318;
+}
+.money.minus{
+    color: red;
+}
+
+
+
+label{
+    display: inline-block;
+    margin: 10px 0px;
+}
+input[type = "text"] , input[type="number"]{    /* TODO: tag input ที่เป็น type "text" และ type "number"*/
+    border: 1px solid #dedede;
+    border-radius: 10px;                        /* * ขอบของช่อง input*/  
+
+    display: block;                             /* * ตบบรรทัดลงมา*/
+
+    font-size: 16px;
+
+    padding: 10px;
+
+    width: 100%;                                 /* * กว้าง 100% เท่ากรอบของ class container (350px) */
+}
+
+
+.submit_btn{
+    background-color: #1ed318;
+    color: rgb(0, 0, 0);
+    cursor: pointer;                            /* * เมาส์ไปชี้แล้วขึ้นรูปกดได้ */
+    box-shadow: var(--box-shabow);
+    border: 1px solid #dedede;
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    margin: 10px 0 30px;
+    padding: 10px;
+
+    width: 100%;
+}
+
+
+
+.list{
+    list-style-type: none;
+    padding: 0px;
+    margin-bottom: 40px;
+}
+.list li{
+    background-color: rgb(241, 229, 205);
+    box-shadow: val(--box-shabow);
+    color: #333;
+
+    display: flex;
+    justify-content: space-between;
+    position: relative;                         /* ! position (parent) */           
+    padding: 10px;                              
+    margin: 10px 0;
+}
+.list li.plus{
+    border-right: 5px solid #1ed318;
+}
+.list li.minus{
+    border-right: 5px solid red;
+} 
+.delete-btn{
+    cursor: pointer;
+    background-color: red;
+    color: #dedede;
+    font-size: 15px;
+
+    border: 0px solid #dedede;
+    border-radius: 5px;
+    padding: 2px 5px;
+    
+    position: absolute;                         /* ! position (child) */   
+    top: 50%;                                   /* * แกน y = 50% */
+    left: 0%;                                   /* * แกน x = 0 */
+    transform: translate(-100%,-50%);           /* * สลับ (x,y) = (0,50) เป็น (-100%,50%) [ตรงข้าม] */
+
+    opacity: 0;                                 /* * การแสดงผล 0 = ไม่แสดงออกมา 1 = แสดงออกมาสุด */
+    transition: opacity 0.3s ease;              /* * ความเร็วการแสดงผล */
+}
+.list li:hover .delete-btn{                     /* TODO ถ้าเอาเมาส์ไปโดน tag: .list li ---> ส่งที่จะทำงานคือ class: delete-btn */
+    opacity: 1;
+}
+
+.submit_btn:focus,.delete-btn:focus{            
+    outline:  0;                                /* * ป้องกันบัค พื้นที่ขอบขาวเพิ่มขึ้นมา */
+}
